@@ -11,13 +11,13 @@ get('/') do
   erb(:home)
 end
 
+get('/doctors/new') do
+  erb(:doctor_form)
+end
+
 get('/doctors') do
   @doctors = Doctor.all()
   erb(:doctors)
-end
-
-get('/doctors/new') do
-  erb(:doctor_form)
 end
 
 post('/doctors') do
@@ -26,4 +26,9 @@ post('/doctors') do
   doctor = Doctor.new({:name => name, :speciality => speciality, :id => nil})
   doctor.save()
   erb(:success)
+end
+
+get('/doctors/:id') do
+  @doctor = Doctor.find(params.fetch("id").to_i)
+  erb(:doctor)
 end
