@@ -1,10 +1,10 @@
 require("rspec")
 require("pry")
 require("pg")
-require("./lib/doctor")
-require("./lib/patient")
+require("doctor")
+require("patient")
 
-DB = PG.connect({:dbname => 'doc_office_test'})
+DB = PG.connect({:dbname => "doc_office_test"})
 
 RSpec.configure do |config|
   config.after(:each) do

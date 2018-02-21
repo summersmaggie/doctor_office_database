@@ -1,14 +1,6 @@
 require("spec_helper")
 
 describe(Patient) do
-  describe("#==") do
-      it("is the same person if it has the same name") do
-        patient1 = Patient.new({:name => "Maggie"})
-        patient2 = Patient.new({:name => "Maggie"})
-        expect(patient1).to(eq(patient2))
-      end
-    end
-
   describe(".all") do
     it("is empty at first") do
       expect(Patient.all()).to(eq([]))
@@ -22,4 +14,12 @@ describe(Patient) do
       expect(Patient.all()).to(eq([test_patient]))
     end
   end
+
+  describe("#==") do
+      it("is the same person if it has the same name") do
+        patient1 = Patient.new({:name => "Maggie"})
+        patient2 = Patient.new({:name => "Maggie"})
+        expect(patient1).to(eq(patient2))
+      end
+    end
 end
