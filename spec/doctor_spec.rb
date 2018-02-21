@@ -45,9 +45,9 @@ describe(Doctor) do
     it("returns an array of patients for that doctor") do
       new_doctor = Doctor.new({:name => "Dr. M", :speciality => "general medicine", :id => nil})
       new_doctor.save()
-      new_patient_one = Patient.new({:name => "Maggie", :birthdate => "1988-03-09", :doctor_id => 2})
+      new_patient_one = Patient.new({:name => "Maggie", :birthdate => "1988-03-09", :doctor_id => new_doctor.id(), :id => nil})
       new_patient_one.save()
-      new_patient_two = Patient.new({:name => "Nugget", :birthdate => "2002-03-09", :doctor_id => 2})
+      new_patient_two = Patient.new({:name => "Nugget", :birthdate => "2002-03-09", :doctor_id => new_doctor.id(), :id => nil})
       new_patient_two.save()
       expect(new_doctor.patients()).to(eq([new_patient_one, new_patient_two]))
     end

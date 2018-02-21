@@ -1,10 +1,11 @@
 class Patient
-  attr_reader :name, :birthdate, :doctor_id
+  attr_reader :name, :birthdate, :doctor_id, :id
 
   def initialize(attributes)
     @name = attributes[:name]
     @birthdate = attributes[:birthdate]
     @doctor_id = attributes[:doctor_id]
+    @id = attributes[:id]
   end
 
   def self.all
@@ -14,13 +15,15 @@ class Patient
       name = patient.fetch("name")
       birthdate = patient.fetch("birthdate")
       doctor_id = patient.fetch("doctor_id").to_i()
-      patients.push(Patient.new({:name => name, :birthdate => birthdate, :doctor_id => doctor_id}))
+      id = patient.fetch("id").to_i()
+      patients.push(Patient.new({:name => name, :birthdate => birthdate, :doctor_id => doctor_id, :id => id}))
     end
     patients
   end
 
   def save
-    result = DB.exec("INSERT INTO patients (name, birthdate, doctor_id) VALUES ('#{@name}', '#{@birthdate}', #{@doctor_id});")
+    result = DB.exec("INSERT INTO patients (name, birthdate, doctor_id) VALUES ('#{@name}', '#{@birthdate}', #{@doctor_id}) RETURNING id;")
+    @id = result.first().fetch("id").to_i()
   end
 
   def ==(another_patient)
