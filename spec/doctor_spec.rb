@@ -15,11 +15,29 @@ describe(Doctor) do
     end
   end
 
+  describe("#id") do
+    it("sets its ID when you save it") do
+      doctor = Doctor.new({:name => "Dr. M", :speciality => "general medicine", :id => nil})
+      doctor.save()
+      expect(doctor.id()).to(be_an_instance_of(Fixnum))
+    end
+  end
+
   describe("#==") do
     it("is the same person if it has the same name") do
       doctor1 = Doctor.new({:name => "Dr. M", :speciality => "general medicine", :id => nil})
       doctor2 = Doctor.new({:name => "Dr. M", :speciality => "general medicine", :id => nil})
       expect(doctor1).to(eq(doctor2))
+    end
+  end
+
+  describe("#find") do
+    it("returns a doctor by its id") do
+      doctor1 = Doctor.new({:name => "Dr. M", :speciality => "general medicine", :id => nil})
+      doctor1.save()
+      doctor2 = Doctor.new({:name => "Dr. Q", :speciality => "general medicine", :id => nil})
+      doctor2.save()
+      expect(Doctor.find(doctor2.id())).to(eq(doctor2))
     end
   end
 end

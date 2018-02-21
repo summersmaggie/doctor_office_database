@@ -21,7 +21,6 @@ class Patient
 
   def save
     result = DB.exec("INSERT INTO patients (name, birthdate, doctor_id) VALUES ('#{@name}', '#{@birthdate}', #{@doctor_id});")
-
   end
 
   def ==(another_patient)
