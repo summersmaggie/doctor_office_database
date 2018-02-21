@@ -37,4 +37,8 @@ class Doctor
     end
     found_doctor
   end
+
+  def patients
+    
+  end
 end
