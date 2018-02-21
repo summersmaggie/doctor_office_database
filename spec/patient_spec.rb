@@ -2,11 +2,11 @@ require("rspec")
 require("pg")
 require("patient")
 
-DB = PG.connect({:dbname => 'office_database_test'})
+DB = PG.connect({:dbname => 'doc_office_test'})
 
 RSpec.configure do |config|
   config.after(:each) do
-    DB.exec("DELETE FROM patients *;")
+    DB.exec('DELETE FROM patients *;')
   end
 end
 
@@ -24,7 +24,7 @@ describe(Patient) do
       expect(Patient.all()).to(eq([]))
     end
   end
-  
+
   describe("#save") do
     it("saves a patient to an array of patients") do
       test_patient = Patient.new({:name => "Maggie", :birthdate => "1988-03-09", :doctor_id => 2})

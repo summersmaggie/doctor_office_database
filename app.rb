@@ -5,4 +5,4 @@ require("./lib/doctor")
 require("./lib/patient")
 require("pg")
 
-DB = PG.connect({:dbname => "office_database_test"})
+DB = PG.connect({:dbname => 'doc_office_test'})

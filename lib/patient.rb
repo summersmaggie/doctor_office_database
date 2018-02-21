@@ -25,7 +25,4 @@ class Patient
   def save
     DB.exec("INSERT INTO patients (name, birthdate, doctor_id) VALUES ('#{@name}', '#{@birthdate}', #{@doctor_id});")
   end
-
-
-
 end
