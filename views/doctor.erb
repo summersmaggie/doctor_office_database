@@ -5,6 +5,7 @@
 
   <ul>
     <% @doctor.patients().each() do |patient| %>
+    <% binding.pry %>
       <li><%= patient.name() %> </li>
     <% end %>
   </ul>
