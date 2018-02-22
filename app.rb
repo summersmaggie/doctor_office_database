@@ -42,7 +42,7 @@ post('/patients') do
   @doctor = Doctor.find(doctor_id)
   @patient = Patient.new({:name => name, :birthdate => birthdate, :doctor_id => doctor_id, :id => nil})
   @patient.save()
-  binding.pry
+
   erb(:doctor)
 end
 

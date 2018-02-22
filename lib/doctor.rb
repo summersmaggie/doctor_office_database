@@ -8,8 +8,8 @@ class Doctor
   end
 
   def self.all
-    returned_doctors = DB.exec("SELECT * FROM doctors;")
     doctors = []
+    returned_doctors = DB.exec("SELECT * FROM doctors;")
     returned_doctors.each() do |doctor|
       name = doctor.fetch("name")
       speciality = doctor.fetch("speciality")
